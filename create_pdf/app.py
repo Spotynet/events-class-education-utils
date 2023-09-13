@@ -1,26 +1,31 @@
-import json
+import logging
 from datetime import datetime
+
 from service import Service
+
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 service = Service()
 
 def lambda_handler(event, _):
-    if event["type_pdf"] == "quote":
-        response = service.create_pdfs_to_quote(event["quote_id"], event["data"])
-    elif event["type_pdf"] == "payment":
-        response = service.create_pdfs_to_payment(event["quote_id"], event["data"])
+    logger.info({"event": event})
 
-    return {
-        "statusCode": 200,
-        "body": json.dumps(response),
-        "headers": {
-            "Access-Control-Allow-Origin": "*",
-        },
-    }
+    data = event["data"]
+    data["quote_id"] = event["quote_id"]
+
+    if event["type_pdf"] == "quote":
+        response = service.create_pdfs_to_quote(data)
+    elif event["type_pdf"] == "payment":
+        response = service.create_pdfs_to_payment(data)
+    
+    logger.info({"response": response})
+
+    return response
 
 
 lambda_handler({
-    "type_pdf": "payment",
+    "type_pdf": "quote",
     "quote_id": 11,
     "data": {
         "prospect_id": 14465,
@@ -56,5 +61,3 @@ lambda_handler({
     },
 }, None
 )
-
-

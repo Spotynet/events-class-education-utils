@@ -4,40 +4,46 @@ import pdfkit
 
 from s3 import S3utils
 
+s3_utils = S3utils()
+
+
 class Service:
     """
     Service to create PDFs
     """
 
-        
-    def create_pdfs_to_quote(self, quote_id: int, data: dict):
-        data["tuition_range"] = f"From {data['tuition_from']} to {data['tuition_to']}"
-        data["quote_number"] = str(quote_id).zfill(10)
-        data["request_number"] = str(data["request"]).zfill(10)
-        data["date"] = data["created_at"].strftime("%B %d, %Y")
+    def create_pdfs_to_quote(self, data: dict):
+        data = self._prepare_data(data)
 
         application_url = self._create_pdf(data, "application_template")
         quote_url = self._create_pdf(data, "quote_template")
         terms_and_conditions_url = self._create_pdf(data, "terms_and_conditions_template")
 
-        return {
-            # "application_url": application_url,
-            # "quote_url": quote_url,
-            # "terms_and_conditions_url": terms_and_conditions_url,
+        response = {
+            "application_url": application_url,
+            "quote_url": quote_url,
+            "terms_and_conditions_url": terms_and_conditions_url,
         }
-    
-    def create_pdfs_to_payment(self, quote_id: int, data: dict):
-        data["tuition_range"] = f"From {data['tuition_from']} to {data['tuition_to']}"
-        data["quote_number"] = str(quote_id).zfill(10)
-        data["request_number"] = str(data["request"]).zfill(10)
-        data["date"] = data["created_at"].strftime("%B %d, %Y")
+
+        return response
+
+    def create_pdfs_to_payment(self, data: dict):
+        data = self._prepare_data(data)
 
         payment_url = self._create_pdf(data, "payment_template")
 
         return {
             "payment_url": payment_url,
         }
-    
+
+    def _prepare_data(self, data: dict):
+        data["tuition_range"] = f"From {data['tuition_from']} to {data['tuition_to']}"
+        data["quote_number"] = str(data["quote_id"]).zfill(10)
+        data["request_number"] = str(data["request"]).zfill(10)
+        data["date"] = data["created_at"].strftime("%B %d, %Y")
+
+        return data
+
     def _create_pdf(self, data: dict, template_name: str):
         context = data
 
@@ -65,30 +71,26 @@ class Service:
             "margin-bottom": "0.78in",
         }
 
-        output = f"templates/output/{template_name}.pdf"
+        pdf_content = pdfkit.from_string(output_text, configuration=config, options=options)
 
-        # pdf_content = pdfkit.from_string(output_text, configuration=config, options=options)
-        pdf_content = pdfkit.from_string(output_text, output_path=output, configuration=config, options=options)
+        if "application" in template_name:
+            type_pdf = "application"
+        elif "quote" in template_name:
+            type_pdf = "quote"
+        elif "conditions" in template_name:
+            type_pdf = "terms_and_conditions"
+        elif "payment" in template_name:
+            type_pdf = "payment"
 
-        # if "application" in template_name:
-        #     type_pdf = "application"
-        # elif "quote" in template_name:
-        #     type_pdf = "quote"
-        # elif "conditions" in template_name:
-        #     type_pdf = "terms_and_conditions"
-        # elif "payment" in template_name:
-        #     type_pdf = "payment"
+        url_pdf = s3_utils.sending_pdf_to_s3(
+            pdf_content,
+            {
+                "event_id": data["event_id"],
+                "prospect_id": data["prospect_id"],
+                "name_prospect": data["first_name"].lower() + "-" + data["last_name"].lower(),
+                "type_pdf": type_pdf,
+                "date": data["created_at"].date()
+            },
+        )
 
-        # url_pdf = S3utils.sending_pdf_to_s3(
-        #     pdf_content,
-        #     {
-        #         "event_id": data["event_id"],
-        #         "prospect_id": data["prospect_id"],
-        #         "name_prospect": data["first_name"].lower() + "_" + data["last_name"].lower(),
-        #         "type_pdf": type_pdf,
-        #         "quote_number": data["quote_number"],
-        #     },
-        # )
-
-        # print(url_pdf)
-        return output
+        return url_pdf
