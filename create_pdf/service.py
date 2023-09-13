@@ -40,7 +40,6 @@ class Service:
         data["tuition_range"] = f"From {data['tuition_from']} to {data['tuition_to']}"
         data["quote_number"] = str(data["quote_id"]).zfill(10)
         data["request_number"] = str(data["request"]).zfill(10)
-        data["date"] = data["created_at"].strftime("%B %d, %Y")
 
         return data
 
@@ -89,7 +88,7 @@ class Service:
                 "prospect_id": data["prospect_id"],
                 "name_prospect": data["first_name"].lower() + "-" + data["last_name"].lower(),
                 "type_pdf": type_pdf,
-                "date": data["created_at"].date()
+                "date": data["created_at"].split("T")[0],
             },
         )
 
