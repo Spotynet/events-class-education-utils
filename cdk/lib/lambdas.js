@@ -17,6 +17,9 @@ class Lambdas extends Construct {
             memorySize: 1024,
             logRetention: RetentionDays.ONE_MONTH,
             role: roles.lambdaRole,
+            environment: {
+                BUCKET_NAME: "api-collect-info-cem-qr"
+            }
         });
         }
 }
