@@ -1,0 +1,12 @@
+{
+    "environment": {
+        "dev": {
+            "stage": "dev", 
+            "region": "us-west-1"
+        },
+        "prod": {
+            "stage": "prod", 
+            "region": "us-east-1"
+        }
+    }
+}
