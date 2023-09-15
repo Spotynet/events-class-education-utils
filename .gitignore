@@ -4,4 +4,17 @@ node_modules
 .cdk.staging
 cdk.out
 /dist
-/venv
+
+# Python
+*.log
+*.pot
+*.pyc
+__pycache__/
+env
+.env
+.pytest_cache
+venv/
+static/
+
+# Mac
+.DS_Store

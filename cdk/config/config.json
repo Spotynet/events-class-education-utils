@@ -2,11 +2,13 @@
     "environment": {
         "dev": {
             "stage": "dev", 
-            "region": "us-west-1"
+            "region": "us-west-1",
+            "layerWhtmlToPdfArn": "arn:aws:lambda:us-west-1:346463309815:layer:wkhtmltopdf-0-12-6:2"
         },
         "prod": {
             "stage": "prod", 
-            "region": "us-east-1"
+            "region": "us-east-1",
+            "layerWhtmlToPdfArn": "arn:aws:lambda:us-east-1:346463309815:layer:wkhtmltopdf-0-12-6:2"
         }
     }
 }
