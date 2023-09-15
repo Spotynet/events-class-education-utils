@@ -6,6 +6,8 @@ from s3 import S3utils
 
 s3_utils = S3utils()
 
+PATH_LAYER = os.environ.get("PATH_LAYER")
+
 
 class Service:
     """
@@ -54,7 +56,9 @@ class Service:
         output_text = template.render(context)
 
         # Encuentra la ruta completa al ejecutable wkhtmltopdf
-        wkhtmltopdf_path = os.popen("which wkhtmltopdf").read().strip()
+        # wkhtmltopdf_path = os.popen("which wkhtmltopdf").read().strip()
+        wkhtmltopdf_path = "./.binary/wkhtmltox-0.12.6-4.amazonlinux2_lambda/bin/wkhtmltopdf"
+        # subprocess.run(['wkhtmltopdf', 'input.html', 'output.pdf'])
         # Configura la ruta a wkhtmltopdf usando la ruta encontrada
         config = pdfkit.configuration(wkhtmltopdf=wkhtmltopdf_path)
 

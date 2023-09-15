@@ -1,5 +1,4 @@
 import logging
-from datetime import datetime
 
 from service import Service
 

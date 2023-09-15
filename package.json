@@ -1,21 +1,17 @@
 {
-  "name": "create-pdf",
+  "name": "events-class-education-utils",
   "version": "0.1.0",
   "bin": {
-    "create-pdf": "bin/app.js"
+    "events-class-education-utils": "bin/app.js"
   },
   "scripts": {
-    "build": "echo \"The build step is not required when using JavaScript!\" && exit 0",
-    "cdk": "cdk",
-    "test": "jest",
-    "synth:dev": "NODE_ENV=dev NODE_CONFIG_DIR=./cdk/config ENV=dev npx cdk synth --stage dev",
-    "deploy:dev": "NODE_ENV=dev NODE_CONFIG_DIR=./cdk/config ENV=dev npx cdk deploy --require-approval never --stage dev",
-    "synth:prod": "NODE_ENV=prod NODE_CONFIG_DIR=./cdk/config ENV=prod npx cdk synth --stage prod",
-    "deploy:prod": "NODE_ENV=prod NODE_CONFIG_DIR=./cdk/config ENV=prod npx cdk deploy --require-approval never --stage prod"
+    "synth:dev": "cdk synth events-class-education-utils-dev",
+    "deploy:dev": "cdk deploy events-class-education-utils-dev",
+    "synth:prod": "cdk synth events-class-education-utils-prod",
+    "deploy:prod": "cdk deploy events-class-education-utils-prod"
   },
   "devDependencies": {
-    "aws-cdk": "2.95.1",
-    "jest": "^29.6.4"
+    "aws-cdk": "2.95.1"
   },
   "dependencies": {
     "aws-cdk-lib": "2.95.1",
