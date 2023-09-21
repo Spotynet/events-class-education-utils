@@ -1,6 +1,7 @@
 import os
 import jinja2
 import pdfkit
+from datetime import datetime
 
 from s3 import S3utils
 
@@ -30,6 +31,9 @@ class Service:
         return response
 
     def create_pdfs_to_payment(self, data: dict):
+        data["tuition_from"] = 0
+        data["tuition_to"] = 0
+
         data = self._prepare_data(data)
 
         payment_url = self._create_pdf(data, "payment_template")
@@ -42,6 +46,9 @@ class Service:
         data["tuition_range"] = f"From {data['tuition_from']} to {data['tuition_to']}"
         data["quote_number"] = str(data["quote_id"]).zfill(10)
         data["request_number"] = str(data["request"]).zfill(10)
+
+        date_obj = datetime.strptime(data["created_at"], "%Y-%m-%d")
+        data["date"] = date_obj.strftime("%B %d, %Y")
 
         return data
 
@@ -58,7 +65,6 @@ class Service:
         # Encuentra la ruta completa al ejecutable wkhtmltopdf
         # wkhtmltopdf_path = os.popen("which wkhtmltopdf").read().strip()
         wkhtmltopdf_path = "./.binary/wkhtmltox-0.12.6-4.amazonlinux2_lambda/bin/wkhtmltopdf"
-        # subprocess.run(['wkhtmltopdf', 'input.html', 'output.pdf'])
         # Configura la ruta a wkhtmltopdf usando la ruta encontrada
         config = pdfkit.configuration(wkhtmltopdf=wkhtmltopdf_path)
 

@@ -7,119 +7,120 @@
     <title>{{first_name}} {{last_name}} Quote</title>
 </head>
 <body style="font-family: Arial, Helvetica, sans-serif;">
-
-<p>&nbsp;</p>
-<table style="width: 100%; border-collapse: collapse;" border="0">
-<tbody>
-<tr>
-<td style="width: 50%;"><img src="https://api-collect-info-cem-qr.s3.amazonaws.com/logos/logo_class_horizontal.png" alt="" width="" height="80" /></td>
-<td style="width: 50%;"><img style="float: right;" src="{{qr_url}}" alt="" width="" height="110" /></td>
-</tr>
-</tbody>
-</table>
-<h1 style="text-align: center; margin-bottom: 5px;">{{event_name}}</h1>
-<h2 style="text-align: center; margin: 0px;">Payment</h2>
-<p>&nbsp;</p>
-<div class="page" title="Page 1">
-<div class="layoutArea">
-<div class="column">
-<p style="text-align: right;"><strong>Cashier</strong>: {{consultant}}<br /><strong>Request No</strong>. {{request_number}}<br /><strong>Quote No</strong>. {{quote_number}}<br /><strong>Fecha</strong>: {{date}}</p>
-<div class="page" title="Page 1">
-<div class="layoutArea">
-<div class="column">
-<h3 style="text-align: center;"><strong><span style="color: #ff0000;">STUDENT INFORMATION</span></strong></h3>
-</div>
-</div>
-</div>
-<div class="page" title="Page 1">
-<div class="layoutArea">
-<div class="column">
-<h3><strong>{{first_name}} {{last_name}}</strong></h3>
-<table style="height: 18px; width: 100%; border-collapse: collapse;">
-<tbody>
-<tr style="height: 18px;">
-<td style="width: 53.9773%; height: 18px;">
-<div class="page" title="Page 1">
-<div class="layoutArea">
-<div class="column">
-<p style="margin: 0px;"><strong>Email</strong>: {{email}}<br /><strong>Birthday</strong>: {{birthday}}<br /><strong>Address</strong>: {{address}}<br /><strong>State</strong>: {{state}}</p>
-</div>
-</div>
-</div>
-</td>
-<td style="width: 46.0227%; height: 18px;">
-<div class="page" title="Page 1">
-<div class="layoutArea">
-<div class="column">
-<p style="margin: 0px;"><strong>Phone number</strong>: {{phone}} <strong><br /></strong><strong>Gender</strong>: {{gender}}<br /><strong>Country</strong>: {{country}}</p>
-</div>
-</div>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-<p>&nbsp;</p>
-<div class="page" title="Page 1">
-<div class="layoutArea">
-<div class="column">
-<h3 style="text-align: center;"><strong><span style="color: #ff0000;">SELECTED PROGRAM</span></strong></h3>
-<table style="width: 100%; border-collapse: collapse;" border="0">
-<tbody>
-<tr>
-<td style="width: 9.11606%;">
-<div class="page" title="Page 1">
-<div class="layoutArea">
-<div class="column">
-<p><strong>Program name </strong><br /><strong>Location: </strong><br /><strong>Credential type: </strong><br /><strong>Duration:</strong><br /><strong>Start Date: </strong><br /><strong>Tuition range:</strong><br /><strong>Initial payment:</strong><br /><strong>Offer:</strong></p>
-<p><strong>TOTAL:</strong></p>
-</div>
-</div>
-</div>
-</td>
-<td style="width: 24.3335%;">
-<div class="page" title="Page 1">
-<div class="layoutArea">
-<div class="column">
-<div class="page" title="Page 1">
-<div class="layoutArea">
-<div class="column">
-<p>{{program_name}}<br />{{location}}<br />{{credential_type}}<br />{{duration}}<br />{{start_date}}<br />{{tuition_range}}<br />$ 15,000 MXN<br />- $ 7,500 MXN</p>
-<p>$ 7,500 MXN</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</td>
-<td style="width: 2.6002%;">
-<div class="page" title="Page 1">
-<div class="layoutArea">
-<div class="column">
-<p><img style="display: block; margin-left: auto; margin-right: auto;" src="{{logo_path}}" alt="" width="" height="110" /></p>
-</div>
-</div>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="page" title="Page 1">
-<div class="layoutArea">
-<div class="column">&nbsp;</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-
+ 
+    <table style="width: 100%; border-collapse: collapse;" border="0">
+        <tbody>
+        <tr>
+        <td style="width: 50%;"><img src="https://api-collect-info-cem-qr.s3.amazonaws.com/logos/logo_class_horizontal.png" alt="" width="" height="80" /></td>
+        <td style="width: 50%;"><img style="float: right;" src="{{qr_url}}" alt="" width="" height="110" /></td>
+        </tr>
+        </tbody>
+        </table>
+        <h1 style="text-align: center; margin-bottom: 5px;">{{event_name}}</h1>
+        <h2 style="text-align: center; margin: 0px;">Payment</h2>
+        <p>&nbsp;</p>
+        <div class="page" title="Page 1">
+        <div class="layoutArea">
+        <div class="column">
+        <p style="text-align: right;"><strong>Cashier</strong>: {{consultant}}<br /><strong>Request No</strong>. {{request_number}}<br /><strong>Quote No</strong>. {{quote_number}}<br /><strong>Fecha</strong>: {{date}}</p>
+        <div class="page" title="Page 1">
+        <div class="layoutArea">
+        <div class="column">
+        <h3 style="text-align: center;"><strong><span style="color: #ff0000;">PAYMENT INFORMATION</span></strong></h3>
+        </div>
+        </div>
+        </div>
+        <div class="page" title="Page 1">
+        <div class="layoutArea">
+        <div class="column">
+        <h3 style="text-align: center; margin-bottom: 5px;"><strong>{{first_name}} {{last_name}}</strong></h3>
+        <h4 style="text-align: center; margin: 0px;">{{email}}<br />{{phone}}</h4>
+        <table style="height: 74px; width: 450px; border-collapse: collapse; margin-left: auto; margin-right: auto;">
+        <tbody>
+        <tr style="height: 18px;">
+        <td style="width: 269.734px; height: 18px;">
+        <div class="page" title="Page 1">
+        <div class="layoutArea">
+        <div class="column">
+        <p style="margin: 0px; text-align: left;">&nbsp;</p>
+        <p style="margin: 0px; text-align: left;"><strong>Program name: </strong>{{program_name}}</p>
+        <p style="margin: 0px; text-align: left;"><strong>Start Date: </strong>{{start_date}} <strong><br /></strong></p>
+        </div>
+        </div>
+        </div>
+        </td>
+        </tr>
+        </tbody>
+        </table>
+        <div class="page" title="Page 1">
+        <div class="layoutArea">
+        <div class="column">
+        <div class="page" title="Page 1">
+        <div class="layoutArea">
+        <div class="column">
+        <h3 style="text-align: center;"><strong><span style="color: #ff0000;"><br />PAYMENT</span></strong></h3>
+        <table style="width: 60%; width: 600px; margin-left: auto; margin-right: auto; border-collapse: collapse;" border="0">
+        <tbody>
+        <tr>
+        <td>
+        <div class="page" title="Page 1">
+        <div class="layoutArea">
+        <div class="column">
+        <p>&nbsp;</p>
+        <p><strong>Cash</strong><br /><strong>Debit card: </strong><br /><strong>Credit card: </strong><br /><strong>Wire transfer:</strong><br /><br /></p>
+        <p><strong>TOTAL:</strong></p>
+        </div>
+        </div>
+        </div>
+        </td>
+        <td>
+        <div class="page" title="Page 1">
+        <div class="layoutArea">
+        <div class="column" >
+        <div class="page" title="Page 1">
+        <div class="layoutArea">
+        <div class="column">
+        <p style="text-align: center;"> <strong>Value paid</strong></p>
+        <p style="text-align: right;">{{cash_value}}<br />{{deb_card_value}}<br />{{cred_card_value}}<br />{{transfer_value}}<br /><br /></p>
+        <p style="text-align: right;">{{total_pay}}</p>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </td>
+        <td>
+        <div class="page" title="Page 1">
+        <div class="layoutArea">
+        <div class="column">
+        <p style="text-align: center;"><strong>Payment document</strong></p>
+        <p style="text-align: right;"><br />{{deb_card_doc}}<br />{{cred_card_doc}}<br />{{transfer_doc}}<br /><br /></p>
+        <p>&nbsp;</p>
+        </div>
+        </div>
+        </div>
+        </td>
+        </tr>
+        </tbody>
+        </table>
+        <div class="page" title="Page 1">
+        <div class="layoutArea">
+        <div class="column">&nbsp;</div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
 
 </body>
 
