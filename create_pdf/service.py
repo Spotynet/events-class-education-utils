@@ -33,6 +33,7 @@ class Service:
     def create_pdfs_to_payment(self, data: dict):
         data["tuition_from"] = 0
         data["tuition_to"] = 0
+        data["payment_number"] = str(data["payment_id"]).zfill(10)
 
         data = self._prepare_data(data)
 
